@@ -38,7 +38,7 @@ pub async fn add_user(db: web::Data<Pool>, item: web::Json<InputUser>) -> Result
         .map_err(|_| HttpResponse::InternalServerError())?)
 }
 
-pub async fn delete_user(db: web::Data<Pool>, user_id: web::Path<i32>) -> Result<HttpResponse, diesel::result::Error> {
+pub async fn delete_user(db: web::Data<Pool>, user_id: web::Path<i32>) -> Result<HttpResponse, Error> {
     Ok(web::block(move || delete_single_user(db, user_id.into_inner()))
         .await
         .map(|user| HttpResponse::Ok().json(user))
