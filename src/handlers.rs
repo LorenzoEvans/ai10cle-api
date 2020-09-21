@@ -37,21 +37,40 @@ pub async fn add_user(db: web::Data<Pool>, item: web::Json<InputUser>) -> Result
         .map_err(|_| HttpResponse::InternalServerError())?)
 }
 
-pub async fn delete_user(db: web::Data<Pool>) -> Result<HttpResponse, Error> {
-    format!("hello from delete user")
+pub async fn delete_user(db: web::Data<Pool>, user_id: web::Path<i32>) -> Result<HttpResponse, diesel::result::Error> {
+    Ok(web::block(move || delete_single_user(db))
+        .await
+        .map(|user| HttpResponse::Ok().json(user))
+        .map_err(|_| HttpResponse::InternalServerError())?)
 }
 
-pub async fn get_articles(db: web::Data<Pool>) -> Result<HttpResponse, Error> {
+pub async fn get_articles(db: web::Data<Pool>) -> Result<HttpResponse, diesel::result::Error> {
     format!("hello from get articles")
 }
-fn get_all_users(pool: web::Data<Pool>) -> Result<Vec<User>, diesel::result::Error> {
+fn get_all_users(pool: web::Data<Pool>) -> Result<Vec<User>, Error> {
     let conn = pool.get().unwrap();
     let items = users.load::<User>(&conn)?;
     Ok(items)
 }
 
-fn db_get_user_by_id(){}
-fn add_single_user(){}
+fn db_get_user_by_id(pool: web::Data<Pool>, user_id: web::Path<i32>) -> Result<User, diesel::result::Error> {
+    let conn = pool.get().unwrap();
+    users.find(user_id).get_result::<User>(&conn)
+}
+fn add_single_user(db: web::Data<Pool>, item: web::Json<InputUser>) -> Result<User, diesel::result::Error>
+{
+    let conn = db.get().unwrap();
+    let new_user = NewUser {
+        first_name: &item.first_name,
+        last_name: &item.last_name,
+        email: &item.email,
+        created_at: chrono::Local::now().naive_local(),
+    };
+
+    let res = insert_into(users).values(&new_user).get_result(&conn)?;
+
+    Ok(res)
+}
 fn delete_single_user(){}
 
 // pub async fn save_articles
