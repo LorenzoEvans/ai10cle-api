@@ -5,8 +5,10 @@ use derive_more::Display;
 pub enum ServiceError {
     #[display(fmt = "Internal Server Error")]
     InternalServerError,
+
     #[display(fmt = "BadRequest: {}", _0)]
     BadRequest(String),
+    
     #[display(fmt = "JWKSFetchError")]
     JWKSFetchError
 }

@@ -14,10 +14,10 @@ pub struct User {
 
 #[derive(Insertable, Debug)]
 #[table_name = "users"]
-pub struct NewUser {
+pub struct NewUser<'a> {
     // For inserting new users
-    pub first_name: String,
-    pub last_name: String,
-    pub email: String,
+    pub first_name: &'a str,
+    pub last_name: &'a str,
+    pub email: &'a str,
     pub created_at: NaiveDateTime
 }
