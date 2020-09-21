@@ -12,6 +12,12 @@ pub struct User {
     pub created_at: NaiveDateTime
 }
 
+// impl User
+// https://dev.to/werner/practical-rust-web-development-authentication-3ppg
+// pub struct Article
+
+
+
 #[derive(Insertable, Debug)]
 #[table_name = "users"]
 pub struct NewUser<'a> {
