@@ -19,10 +19,13 @@ mod models; // Models for our data base
 mod schema; // Models for state (and then database)
 mod auth;
 pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
-#[actix_rt::main]
-
+#[actix_rt::main]   // This provides a run-time for Actix actors, that will schedule,
+                    // and run them. We use the actix_rt::main `attribute`, to signify
+                    // this.
 async fn main() -> std::io::Result<()> {
     // This returns a Result type
+    // This async/await construct yield control from a current thread,
+    // to some other thread, that will run, while the current one blocks.
     dotenv::dotenv().ok(); // Activate dotenv as early in app as possible
     std::env::set_var("Rust_Log", "actix_web=debug");
 
@@ -34,7 +37,9 @@ async fn main() -> std::io::Result<()> {
         .build(manager)
         .expect("Failed to create pool.");
 
-    HttpServer::new(move || {
+    HttpServer::new(move || {   // The HttpServer type, manages HTTP requests.
+                                // It accepts an application `factory`, which must be
+                                // Send + Sync.
         let auth = HttpAuthentication::bearer(validate);
         App::new()
             .wrap(auth)
@@ -44,8 +49,9 @@ async fn main() -> std::io::Result<()> {
             .route("/users/{id}", web::get().to(handlers::get_user_by_id))
             .route("/users", web::post().to(handlers::add_user))
             .route("/users/{id}", web::delete().to(handlers::delete_user))   
-    }).bind("127.0.0.1:8080")?
-    .run()
+    }).bind("127.0.0.1:8080")?  // ? Bubbles up errors from the associated function.
+                                // Bind attaches a socket address to the application.
+    .run() // Returns an instance of Server type.
     .await
 }
 

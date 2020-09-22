@@ -15,16 +15,23 @@ pub struct InputUser {
     pub first_name: String,
     pub last_name: String,
     pub email: String,
+    pub password: String,
 }
 
 pub async fn get_users(db: web::Data<Pool>) -> Result<HttpResponse, Error> {
+    // The web module provides helper functions and types for applications,
+    // block executes a blocking function on a thread pool (the pool coming from our db)
+    // until the function execution resolves.
     Ok(web::block(move || get_all_users(db))
         .await
-        .map(|user| HttpResponse::Ok().json(user))
+        .map(|user| HttpResponse::Ok().json(user)) // Ok here corresponds to 200, with some syntactic sugar.
         .map_err(|_| HttpResponse::InternalServerError())?)
 }
 
 pub async fn get_user_by_id(db: web::Data<Pool>, user_id: web::Path<i32>) -> Result<HttpResponse, Error> {
+    // We're returning result types, because we want to prepare for potential failure,
+    // which requires a Error type, to be available along with the HttpResponse type that
+    // will be returned if the request is successful.
 Ok(web::block(move || db_get_user_by_id(db, user_id.into_inner()))
     .await
     .map(|user| HttpResponse::Ok().json(user))
@@ -65,6 +72,7 @@ fn add_single_user(db: web::Data<Pool>, item: web::Json<InputUser>) -> Result<Us
         first_name: &item.first_name,
         last_name: &item.last_name,
         email: &item.email,
+        password: &item.password,
         created_at: chrono::Local::now().naive_local(),
     };
 
@@ -79,6 +87,10 @@ fn delete_single_user(db: web::Data<Pool>, user_id: i32) -> Result<usize, diesel
     let count = delete(users.find(user_id)).execute(&conn)?;
 
     Ok(count)
+}
+
+fn register_user(db: web::Data<Pool>, user: User) -> Result<usize, diesel::result::Error> {
+    
 }
 
 
