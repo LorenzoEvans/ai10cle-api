@@ -12,9 +12,10 @@ extern crate dotenv;
 //     println!("Hello")
 // }
 
-
-mod handlers; // this module will contain our handlers
+ // this module will contain our handlers
 mod errors;
+mod user_handlers;
+mod article_handlers;
 mod models; // Models for our data base
 mod schema; // Models for state (and then database)
 mod auth;
@@ -44,11 +45,11 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(auth)
             .data(pool.clone())
-            .route("/users", web::get().to(handlers::get_users))
+            .route("/users", web::get().to(user_handlers::get_users))
             
-            .route("/users/{id}", web::get().to(handlers::get_user_by_id))
-            .route("/users", web::post().to(handlers::add_user))
-            .route("/users/{id}", web::delete().to(handlers::delete_user))   
+            .route("/users/{id}", web::get().to(user_handlers::get_user_by_id))
+            .route("/users", web::post().to(user_handlers::add_user))
+            .route("/users/{id}", web::delete().to(user_handlers::delete_user))   
     }).bind("127.0.0.1:8080")?  // ? Bubbles up errors from the associated function.
                                 // Bind attaches a socket address to the application.
     .run() // Returns an instance of Server type.
