@@ -1,10 +1,10 @@
 use actix_web::{Error, web, middleware, App, HttpServer};
-use actix_web::service::{ServiceRequest};
 use actix_web_httpauth::extractors::bearer::{BearerAuth, Config};
 use actix_identity::{Identity, CookieIdentityPolicy, IdentityService};
 use actix_web_httpauth::extractors::AuthenticationError;
 use actix_web_httpauth::middleware::HttpAuthentication;
 use diesel::prelude::*;
+use actix_web::dev::ServiceRequest;
 use diesel::r2d2::{self, ConnectionManager};
 #[macro_use]
 extern crate diesel;

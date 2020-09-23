@@ -9,7 +9,6 @@ use serde::{Deserialize, Serialize};
 use std::vec::Vec;
 use bcrypt::{hash, verify, DEFAULT_COST};
 
-
 #[derive(Debug, Serialize, Deserialize)]
 
 pub struct InputUser {
@@ -96,20 +95,20 @@ fn get_all_users(pool: web::Data<Pool>) -> Result<Vec<User>, diesel::result::Err
 }
 
 
-fn hash_pw(p_text: String) -> Result<String,Error> {
-    Ok(hash(p_text, DEFAULT_COST)?)
+fn hash_pw(p_text: String) -> String {
+    hash(p_text, DEFAULT_COST).unwrap()
 }
 // fn login(authed_u: web::Json<AuthUser>, pool: web::Data<Pool>, token: web::Data<CS>)
 fn add_single_user(db: web::Data<Pool>, item: web::Json<InputUser>) -> Result<User, diesel::result::Error>
 {
     let conn = db.get().unwrap();
-    let hashed_pw = hash_pw(item.password);
+    let hashed_pw = hash_pw(item.password.clone());
     let new_user = NewUser {
         user_id: &item.user_id,
         first_name: &item.first_name,
         last_name: &item.last_name,
         email: &item.email,
-        password: &hashed_pw.unwrap(),
+        password: &hashed_pw,
         created_at: chrono::Local::now().naive_local(),
     };
 
