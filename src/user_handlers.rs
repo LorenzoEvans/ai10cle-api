@@ -19,6 +19,22 @@ pub struct InputUser {
     pub password: String,
 }
 
+#[derive(Deserializable)]
+pub struct RegisterUser {
+    // Register user struct for representing a user *during* registration process
+    pub email: String,
+    pub first_name: String,
+    pub last_name: String,
+    pub password: String,
+    pub password_conf: String,
+}
+#[derive(Deserializiable)]
+pub struct AuthUser {
+    // Auth user struct for representing a user *during* login process
+    pub email: String,
+    pub password: String
+}
+
 pub async fn get_users(db: web::Data<Pool>) -> Result<HttpResponse, Error> {
     // The web module provides helper functions and types for applications,
     // block executes a blocking function on a thread pool (the pool coming from our db)
@@ -52,6 +68,8 @@ pub async fn delete_user(db: web::Data<Pool>, _id: web::Path<i32>) -> Result<Htt
         .map(|user| HttpResponse::Ok().json(user))
         .map_err(|_| HttpResponse::InternalServerError())?)
 }
+
+pub fn register(new_user: web::Json<RegUser>)
 
 fn db_get_user_by_id(pool: web::Data<Pool>, _id: i32) -> Result<User, diesel::result::Error> {
     let conn = pool.get().unwrap();
