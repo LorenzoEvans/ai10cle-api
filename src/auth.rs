@@ -2,7 +2,7 @@ use crate::errors::ServiceError;
 use alcoholic_jwt::{token_kid, validate, Validation, JWKS};
 use serde::{Deserialize, Serialize};
 use std::error::Error;
-
+use bcrypt::{DEFAULT_COST, hash, verify};
 
 pub fn validate_token(token: &str) -> Result<bool, ServiceError> {
     let authority = std::env::var("Authority").expect("Authority must be set");

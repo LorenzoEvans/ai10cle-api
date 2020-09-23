@@ -7,6 +7,7 @@ use crate::diesel::RunQueryDsl;
 use diesel::dsl::{delete, insert_into};
 use serde::{Deserialize, Serialize};
 use std::vec::Vec;
+use bcrypt::{hash, verify, DEFAULT_COST};
 
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -19,7 +20,13 @@ pub struct InputUser {
     pub password: String,
 }
 
-#[derive(Deserializable)]
+// So to handle our auth we need to:
+    // Hash the password
+    // We can hash the password on creation, if we add it to the models/schema.
+    // Once we do this, upon login, we can check if the hashed password,
+    // and email match an email/hashed_pw pair in the database.
+
+#[derive(Deserialize)]
 pub struct RegisterUser {
     // Register user struct for representing a user *during* registration process
     pub email: String,
@@ -28,7 +35,7 @@ pub struct RegisterUser {
     pub password: String,
     pub password_conf: String,
 }
-#[derive(Deserializiable)]
+#[derive(Deserialize)]
 pub struct AuthUser {
     // Auth user struct for representing a user *during* login process
     pub email: String,
@@ -44,6 +51,11 @@ pub async fn get_users(db: web::Data<Pool>) -> Result<HttpResponse, Error> {
         .map(|user| HttpResponse::Ok().json(user)) // Ok here corresponds to 200, with some syntactic sugar.
         .map_err(|_| HttpResponse::InternalServerError())?)
 }
+
+pub async fn register_user() -> Result<HttpResponse, Error> {
+    Ok()
+}
+
 
 pub async fn get_user_by_id(db: web::Data<Pool>, _id: web::Path<i32>) -> Result<HttpResponse, Error> {
     // We're returning result types, because we want to prepare for potential failure,
@@ -69,7 +81,7 @@ pub async fn delete_user(db: web::Data<Pool>, _id: web::Path<i32>) -> Result<Htt
         .map_err(|_| HttpResponse::InternalServerError())?)
 }
 
-pub fn register(new_user: web::Json<RegUser>)
+// pub fn register(new_user: web::Json<RegUser>)
 
 fn db_get_user_by_id(pool: web::Data<Pool>, _id: i32) -> Result<User, diesel::result::Error> {
     let conn = pool.get().unwrap();
@@ -84,15 +96,20 @@ fn get_all_users(pool: web::Data<Pool>) -> Result<Vec<User>, diesel::result::Err
 }
 
 
+fn hash_pw(p_text: String) -> Result<String,Error> {
+    Ok(hash(p_text, DEFAULT_COST)?)
+}
+// fn login(authed_u: web::Json<AuthUser>, pool: web::Data<Pool>, token: web::Data<CS>)
 fn add_single_user(db: web::Data<Pool>, item: web::Json<InputUser>) -> Result<User, diesel::result::Error>
 {
     let conn = db.get().unwrap();
+    let hashed_pw = hash_pw(item.password);
     let new_user = NewUser {
         user_id: &item.user_id,
         first_name: &item.first_name,
         last_name: &item.last_name,
         email: &item.email,
-        password: &item.password,
+        password: &hashed_pw.unwrap(),
         created_at: chrono::Local::now().naive_local(),
     };
 

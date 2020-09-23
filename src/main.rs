@@ -1,5 +1,7 @@
-use actix_web::{dev::ServiceRequest, Error, web, App, HttpServer};
+use actix_web::{Error, web, middleware, App, HttpServer};
+use actix_web::service::{ServiceRequest};
 use actix_web_httpauth::extractors::bearer::{BearerAuth, Config};
+use actix_identity::{Identity, CookieIdentityPolicy, IdentityService};
 use actix_web_httpauth::extractors::AuthenticationError;
 use actix_web_httpauth::middleware::HttpAuthentication;
 use diesel::prelude::*;
@@ -33,6 +35,7 @@ async fn main() -> std::io::Result<()> {
     let database_url = std::env::var("DATABASE_URL").expect("Url must be set.");
 
     let manager = ConnectionManager::<PgConnection>::new(database_url);
+    let domain: String = std::env::var("DOMAIN").unwrap_or_else(|_| "localhost".to_string());
 
     let pool: Pool = r2d2::Pool::builder()
         .build(manager)
@@ -43,8 +46,15 @@ async fn main() -> std::io::Result<()> {
                                 // Send + Sync.
         let auth = HttpAuthentication::bearer(validate);
         App::new()
-            .wrap(auth)
             .data(pool.clone())
+            .wrap(auth)
+            .wrap(middleware::Logger::default())
+            .wrap(IdentityService::new(
+                CookieIdentityPolicy::new(utils::SECRET_KEY.as_bytes())
+                    .name("auth")
+                    .path("/")
+                    .max_age_time(chrono::Duration::days(1))
+                    .secure(false))) // this can only be true if you have https
             .route("/users", web::get().to(user_handlers::get_users))
             
             .route("/users/{id}", web::get().to(user_handlers::get_user_by_id))
