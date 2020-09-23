@@ -47,16 +47,14 @@ async fn main() -> std::io::Result<()> {
         let auth = HttpAuthentication::bearer(validate);
         App::new()
             .data(pool.clone())
-            .wrap(auth)
-            .wrap(middleware::Logger::default())
-            .wrap(IdentityService::new(
-                CookieIdentityPolicy::new(utils::SECRET_KEY.as_bytes())
-                    .name("auth")
-                    .path("/")
-                    .max_age_time(chrono::Duration::days(1))
-                    .secure(false))) // this can only be true if you have https
+            // .route("/home")
+            // .route("/login")
+            // .route("/logout")
+            .route("/articles", web::get().to(article_handlers::get_articles))
+            .route("/articles/{id}", web::get().to(article_handlers::get_article_by_id)
+            .route("/articles", web::post().to(article_handlers::add_article))
+            .route("/articles/{id}", web::delete().to(article_handlers::delete_article))
             .route("/users", web::get().to(user_handlers::get_users))
-            
             .route("/users/{id}", web::get().to(user_handlers::get_user_by_id))
             .route("/users", web::post().to(user_handlers::add_user))
             .route("/users/{id}", web::delete().to(user_handlers::delete_user))   

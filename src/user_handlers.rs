@@ -52,9 +52,9 @@ pub async fn get_users(db: web::Data<Pool>) -> Result<HttpResponse, Error> {
         .map_err(|_| HttpResponse::InternalServerError())?)
 }
 
-pub async fn register_user() -> Result<HttpResponse, Error> {
-    Ok()
-}
+// pub async fn register_user() -> Result<HttpResponse, Error> {
+//     Ok()
+// }
 
 
 pub async fn get_user_by_id(db: web::Data<Pool>, _id: web::Path<i32>) -> Result<HttpResponse, Error> {
