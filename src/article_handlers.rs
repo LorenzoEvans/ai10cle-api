@@ -9,7 +9,7 @@ use serde::{Deserialize, Serialize};
 use std::vec::Vec;
 
 
-#[derive(Queryable)]
+#[derive(Queryable, Deserialize, Serialize)]
 pub struct InputArticle {
     pub id: i32,
     pub user_id: i32,
