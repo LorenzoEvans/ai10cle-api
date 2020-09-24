@@ -9,6 +9,8 @@ use serde::{Deserialize, Serialize};
 use std::vec::Vec;
 use bcrypt::{hash, verify, DEFAULT_COST};
 
+
+// add crud
 #[derive(Debug, Serialize, Deserialize)]
 
 pub struct InputUser {
