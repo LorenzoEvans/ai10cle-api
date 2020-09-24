@@ -1,2 +1,2 @@
-web: ./target/release/ai10cle
+web: ./target/release/build
 release: ./target/release/diesel migration run
