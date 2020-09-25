@@ -36,8 +36,10 @@ async fn main() -> std::io::Result<()> {
 
     let manager = ConnectionManager::<PgConnection>::new(database_url);
     let domain: String = std::env::var("DOMAIN").unwrap_or_else(|_| "localhost".to_string());
-    let port = std::env::var("PORT").unwrap_or_else(|_| "5000".to_string());
-
+    let ip: &str = "0.0.0.0";
+    let port: u16 = std::env::var("PORT").unwrap_or_else(|_| "3000".to_string())
+        .parse()
+        .expect("PORT must be a number");
     let pool: Pool = r2d2::Pool::builder()
         .build(manager)
         .expect("Failed to create pool.");
@@ -60,7 +62,7 @@ async fn main() -> std::io::Result<()> {
                 .route("/users/{id}", web::get().to(user_handlers::get_user_by_id))
                 .route("/users", web::post().to(user_handlers::add_user))
                 .route("/users/{id}", web::delete().to(user_handlers::delete_user)))   
-    }).bind("127.0.0.1:8088")?  // ? Bubbles up errors from the associated function.                       // Bind attaches a socket address to the application.
+    }).bind((ip, port))?  // ? Bubbles up errors from the associated function.                       // Bind attaches a socket address to the application.
     .run() // Returns an instance of Server type.
     .await
 }
