@@ -74,7 +74,7 @@ async fn validate(req: ServiceRequest, credentials: BearerAuth) -> Result<Servic
         .unwrap_or_else(Default::default);
     match auth::validate_token(credentials.token()) {
         Ok(res) => {
-            if res == true {
+            if res == true { 
                 Ok(req)
             }
             else {
