@@ -79,7 +79,6 @@ pub async fn delete_user(db: web::Data<Pool>, _id: web::Path<i32>) -> Result<Htt
         .map_err(|_| HttpResponse::InternalServerError())?)
 }
 
-// pub fn register(new_user: web::Json<RegUser>)
 
 fn db_get_user_by_id(pool: web::Data<Pool>, _id: i32) -> Result<User, diesel::result::Error> {
     let conn = pool.get().unwrap();

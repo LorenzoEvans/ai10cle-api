@@ -6,6 +6,7 @@ use actix_web_httpauth::middleware::HttpAuthentication;
 use diesel::prelude::*;
 use actix_web::dev::ServiceRequest;
 use diesel::r2d2::{self, ConnectionManager};
+use crate::auth;
 #[macro_use]
 extern crate diesel;
 extern crate dotenv;
@@ -20,7 +21,6 @@ mod user_handlers;
 mod article_handlers;
 mod models; // Models for our data base
 mod schema; // Models for state (and then database)
-mod auth;
 pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 #[actix_rt::main]   // This provides a run-time for Actix actors, that will schedule,
                     // and run them. We use the actix_rt::main `attribute`, to signify
@@ -49,6 +49,7 @@ async fn main() -> std::io::Result<()> {
                                 // Send + Sync.
         let auth = HttpAuthentication::bearer(validate);
         App::new()
+            .wrap(auth)
             .data(pool.clone()) // allows each handlers a copy of the dB
                                 // so they can interact with it independently.
             // .route("/home")

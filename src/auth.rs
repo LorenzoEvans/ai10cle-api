@@ -42,5 +42,3 @@ fn fetch_jwks(uri: &str) -> Result<JWKS, Box<dyn Error>> {
     let val = res.json::<JWKS>()?;
     return Ok(val)
 }
-
-pub fn login(auth: web::Json<AuthUser>, db: web::Data<Pool>, generator)
