@@ -49,7 +49,8 @@ async fn main() -> std::io::Result<()> {
                                 // Send + Sync.
         let auth = HttpAuthentication::bearer(validate);
         App::new()
-            .data(pool.clone())
+            .data(pool.clone()) // allows each handlers a copy of the dB
+                                // so they can interact with it independently.
             // .route("/home")
             // .route("/login")
             // .route("/logout")

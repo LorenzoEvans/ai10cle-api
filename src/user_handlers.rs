@@ -14,10 +14,12 @@ use bcrypt::{hash, verify, DEFAULT_COST};
 #[derive(Debug, Serialize, Deserialize)]
 
 pub struct InputUser {
+    #[serde(skip)]
     pub user_id: i32,
     pub first_name: String,
     pub last_name: String,
     pub email: String,
+    #[serde(skip)]
     pub password: String,
 }
 
@@ -27,7 +29,7 @@ pub struct InputUser {
     // Once we do this, upon login, we can check if the hashed password,
     // and email match an email/hashed_pw pair in the database.
 
-#[derive(Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct RegisterUser {
     // Register user struct for representing a user *during* registration process
     pub email: String,
@@ -36,7 +38,7 @@ pub struct RegisterUser {
     pub password: String,
     pub password_conf: String,
 }
-#[derive(Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct AuthUser {
     // Auth user struct for representing a user *during* login process
     pub email: String,
@@ -52,11 +54,6 @@ pub async fn get_users(db: web::Data<Pool>) -> Result<HttpResponse, Error> {
         .map(|user| HttpResponse::Ok().json(user)) // Ok here corresponds to 200, with some syntactic sugar.
         .map_err(|_| HttpResponse::InternalServerError())?)
 }
-
-// pub async fn register_user() -> Result<HttpResponse, Error> {
-//     Ok()
-// }
-
 
 pub async fn get_user_by_id(db: web::Data<Pool>, _id: web::Path<i32>) -> Result<HttpResponse, Error> {
     // We're returning result types, because we want to prepare for potential failure,
@@ -127,21 +124,3 @@ fn delete_single_user(db: web::Data<Pool>, _id: i32) -> Result<usize, diesel::re
     Ok(count)
 }
 
-// fn register_user(db: web::Data<Pool>, user: User) -> Result<usize, diesel::result::Error> {
-    
-// }
-
-
-
-
-
-
-
-// pub async fn get_articles(db: web::Data<Pool>) -> Result<HttpResponse, diesel::result::Error> {
-//     format!("hello from get articles")
-// }
-
-
-// // pub async fn save_articles
-
-// // pub async fn delete_article
