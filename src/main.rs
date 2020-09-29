@@ -6,7 +6,6 @@ use actix_web_httpauth::middleware::HttpAuthentication;
 use diesel::prelude::*;
 use actix_web::dev::ServiceRequest;
 use diesel::r2d2::{self, ConnectionManager};
-use crate::auth;
 #[macro_use]
 extern crate diesel;
 extern crate dotenv;
@@ -17,6 +16,7 @@ extern crate dotenv;
 
  // this module will contain our handlers
 mod errors;
+mod auth;
 mod user_handlers;
 mod article_handlers;
 mod models; // Models for our data base
@@ -37,9 +37,7 @@ async fn main() -> std::io::Result<()> {
     let manager = ConnectionManager::<PgConnection>::new(database_url);
     let domain: String = std::env::var("DOMAIN").unwrap_or_else(|_| "localhost".to_string());
     let ip: &str = "0.0.0.0";
-    let port: u16 = std::env::var("PORT").unwrap_or_else(|_| "3000".to_string())
-        .parse()
-        .expect("PORT must be a number");
+    let port = 5000;
     let pool: Pool = r2d2::Pool::builder()
         .build(manager)
         .expect("Failed to create pool.");
