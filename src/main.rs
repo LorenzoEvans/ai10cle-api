@@ -1,4 +1,4 @@
-use actix_web::{Error, web, middleware, App, HttpServer};
+use actix_web::{Error, web, http, middleware, App, HttpServer};
 use actix_web_httpauth::extractors::bearer::{BearerAuth, Config};
 use actix_identity::{Identity, CookieIdentityPolicy, IdentityService};
 use actix_web_httpauth::extractors::AuthenticationError;
@@ -49,7 +49,12 @@ async fn main() -> std::io::Result<()> {
         let auth = HttpAuthentication::bearer(validate);
         App::new()
             .wrap(Cors::new()
-                .allowed_origin("http://localhost:3000/"))
+                .allowed_origin("http://localhost:3000/")
+                .allowed_methods(vec!["GET", "POST"])
+                .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT])
+                .allowed_header(http::header::CONTENT_TYPE)
+                .max_age(3600)
+                .finish())
             .wrap(auth)
             .data(pool.clone()) // allows each handlers a copy of the dB
                                 // so they can interact with it independently.
