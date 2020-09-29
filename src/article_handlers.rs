@@ -45,7 +45,7 @@ pub async fn delete_article(db: web::Data<Pool>, _id: web::Path<i32>) -> Result<
 }
 
 fn add_single_article(db: web::Data<Pool>, item: web::Json<InputArticle>) -> Result<Article, diesel::result::Error> {
-    let conn = db.get().unwrap();
+    let conn = db.get().unwrap(); // Open up connection to Database
     let new_article = NewArticle {
         id: &item.id,
         user_id: &item.user_id,
@@ -60,13 +60,13 @@ fn add_single_article(db: web::Data<Pool>, item: web::Json<InputArticle>) -> Res
 
 
 fn db_get_article_by_id(pool: web::Data<Pool>, _id: i32) -> Result<Article, diesel::result::Error> {
-    let conn = pool.get().unwrap();
+    let conn = pool.get().unwrap(); // Open up connection to Database
 
     articles.find(_id).get_result::<Article>(&conn)
 }
 
 fn get_all_articles(pool: web::Data<Pool>) -> Result<Vec<Article>, diesel::result::Error> {
-    let conn = pool.get().unwrap();
+    let conn = pool.get().unwrap(); // Open up connection to Database
 
     let items = articles.load::<Article>(&conn)?;
     
@@ -74,7 +74,7 @@ fn get_all_articles(pool: web::Data<Pool>) -> Result<Vec<Article>, diesel::resul
 }
 
 fn delete_single_article(db: web::Data<Pool>, _id: i32) -> Result<usize, diesel::result::Error> {
-    let conn = db.get().unwrap();
+    let conn = db.get().unwrap(); // Open up connection to Database
 
     let count = delete(articles.find(_id)).execute(&conn)?;
 

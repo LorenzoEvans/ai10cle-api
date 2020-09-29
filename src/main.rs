@@ -17,8 +17,8 @@ extern crate dotenv;
  // this module will contain our handlers
 mod errors;
 mod auth;
-mod user_handlers;
-mod article_handlers;
+mod user_handlers; // handlers for users
+mod article_handlers; // handlers for articles
 mod models; // Models for our data base
 mod schema; // Models for state (and then database)
 pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
