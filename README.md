@@ -24,7 +24,7 @@ The REST API to the example app is described below.
 
 `GET /users/`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/
+    curl -i -H 'Accept: application/json' http://localhost:5000/articles/
 
 ### Response
 

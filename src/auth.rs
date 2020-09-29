@@ -19,9 +19,8 @@ pub fn validate_token(token: &str) -> Result<bool, ServiceError> {
     Consumes a token as a string, and returns a boolean result of
     the validation, or returns a service error if something went wrong.
     */
-    let authority = std::env::var("Authority").expect("Authority must be set");
-    let jwks = fetch_jwks(&format!("{}{}", authority.as_str(), ".well-known/jwks.json"))
-        .expect("Failed to fetch JWKS.");
+    let authority = std::env::var("AUTHORITY").expect("Authority must be set");
+    let jwks = fetch_jwks(&format!("{}{}", authority.as_str(), ".well-known/jwks.json")).expect("Failed to fetch JWKS.");
     
     let validations = vec![Validation::Issuer(authority), Validation::SubjectPresent];
     let kid = match token_kid(&token) {

@@ -3,6 +3,7 @@ use actix_web_httpauth::extractors::bearer::{BearerAuth, Config};
 use actix_identity::{Identity, CookieIdentityPolicy, IdentityService};
 use actix_web_httpauth::extractors::AuthenticationError;
 use actix_web_httpauth::middleware::HttpAuthentication;
+use actix_web::Cors;
 use diesel::prelude::*;
 use actix_web::dev::ServiceRequest;
 use diesel::r2d2::{self, ConnectionManager};
@@ -36,17 +37,19 @@ async fn main() -> std::io::Result<()> {
 
     let manager = ConnectionManager::<PgConnection>::new(database_url);
     let domain: String = std::env::var("DOMAIN").unwrap_or_else(|_| "localhost".to_string());
+    println!("{}", domain);
     let ip: &str = "0.0.0.0";
     let port = 5000;
     let pool: Pool = r2d2::Pool::builder()
         .build(manager)
         .expect("Failed to create pool.");
-
     HttpServer::new(move || {   // The HttpServer type, manages HTTP requests.
                                 // It accepts an application `factory`, which must be
                                 // Send + Sync.
         let auth = HttpAuthentication::bearer(validate);
         App::new()
+            .wrap(Cors::new()
+                .allowed_origin("http://localhost:3000/"))
             .wrap(auth)
             .data(pool.clone()) // allows each handlers a copy of the dB
                                 // so they can interact with it independently.
