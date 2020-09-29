@@ -3,7 +3,7 @@ use actix_web_httpauth::extractors::bearer::{BearerAuth, Config};
 use actix_identity::{Identity, CookieIdentityPolicy, IdentityService};
 use actix_web_httpauth::extractors::AuthenticationError;
 use actix_web_httpauth::middleware::HttpAuthentication;
-use actix_web::Cors;
+use actix_cors::Cors;
 use diesel::prelude::*;
 use actix_web::dev::ServiceRequest;
 use diesel::r2d2::{self, ConnectionManager};
