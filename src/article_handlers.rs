@@ -4,7 +4,7 @@ use super::Pool;
 use crate::diesel::QueryDsl;
 use actix_web::{web, Error, HttpResponse};
 use crate::diesel::RunQueryDsl;
-use diesel::dsl::{delete, insert_into};
+use diesel::dsl::{delete, insert_into}; 
 use serde::{Deserialize, Serialize};
 use std::vec::Vec;
 
