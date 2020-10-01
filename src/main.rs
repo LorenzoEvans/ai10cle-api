@@ -39,8 +39,8 @@ async fn main() -> std::io::Result<()> {
     let domain: String = std::env::var("DOMAIN").unwrap_or_else(|_| "localhost".to_string());
     // let ip: &str = "0.0.0.0";
     // let port = 5000;
-    let HOST: usizeg = std::env::var("HOST").expect("Host not set");
-    let PORT: usizeg = std::env::var("PORT").expect("Port not set");
+    let HOST: usize = std::env::var("HOST").expect("Host not set");
+    let PORT: usize = std::env::var("PORT").expect("Port not set");
     let pool: Pool = r2d2::Pool::builder()
         .build(manager)
         .expect("Failed to create pool.");
