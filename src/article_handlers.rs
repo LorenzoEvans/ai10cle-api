@@ -13,7 +13,7 @@ use std::vec::Vec;
 pub struct InputArticle {
     pub id: i32,
     pub user_id: i32,
-    pub title: String,
+    pub title: String, 
     pub link: String
 }
 
