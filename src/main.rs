@@ -37,7 +37,6 @@ async fn main() -> std::io::Result<()> {
 
     let manager = ConnectionManager::<PgConnection>::new(database_url);
     let domain: String = std::env::var("DOMAIN").unwrap_or_else(|_| "localhost".to_string());
-    println!("{:?}", std::env::var("PORT"));
     let ip: &str = "0.0.0.0";
     let port = 5000;
     let pool: Pool = r2d2::Pool::builder()
