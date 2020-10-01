@@ -1,6 +1,53 @@
 # AI10cle-API Documentation.
 
 
+# Schema
+
+## Users
+
+1. ## Input User
+
+> These are the properties of the user struct that will be inserted into the database.
+
+| Field      | Type      | Table Notes               |
+|------------|-----------|---------------------------|
+| id         | serial    | Not Nullable, Primary Key |
+| user_id    | i32       | Not Nullable, Integer     |
+| title      | string    | Text, Not Null            |
+| first_name | string    | Text, Not Null            |
+| last_name  | string    | Text, Not Null            |
+| password   | string    | Text, Not Null            |
+| email      | string    | Text, Not Null            |
+| created_at | timestamp | Text, Not Null            |
+
+2. ## Auth User
+
+> These are the properties of the user struct that will be used to authenticate against the database and initiate a session.
+
+| Field      | Type   | Table Notes               |
+|------------|--------|---------------------------|
+| password   | string | Text, Not Null            |
+| email      | string | Text, Not Null            |
+
+3. ## Register User
+
+ > These are the properties of the user struct that will be used to represent a user object during the registration.
+
+## Articles
+
+1. ## Input Article
+   
+> These are the properties of the article struct that will be inserted into the database
+
+| Field      | Type      | Table Notes               |
+|------------|-----------|---------------------------|
+| id         | i32       | Integer, Not Null         |
+| user_id    | i32       | Integer, Not Null         |
+| title      | string    | Text, Not Null            |
+| link       | string    | Text, Not Null            |
+
+
+## Base Url: https://ai10cle-api.herokuapp.com/api/
 
 ## Install
 
