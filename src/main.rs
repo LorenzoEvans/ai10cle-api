@@ -47,6 +47,13 @@ async fn main() -> std::io::Result<()> {
                                 // Send + Sync.
         let auth = HttpAuthentication::bearer(validate);
         App::new()
+            .wrap(Cors::new()
+                .allowed_origin("http://localhost:3000/")
+                .allowed_methods(vec!["GET", "POST"])
+                .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT])
+                .allowed_header(http::header::CONTENT_TYPE)
+                .max_age(3600)
+                .finish())
             .wrap(auth)
             .data(pool.clone()) // allows each handlers a copy of the dB
                                 // so they can interact with it independently.
@@ -62,7 +69,7 @@ async fn main() -> std::io::Result<()> {
                 .route("/users/{id}", web::get().to(user_handlers::get_user_by_id))
                 .route("/users", web::post().to(user_handlers::add_user))
                 .route("/users/{id}", web::delete().to(user_handlers::delete_user)))   
-    }).bind((ip, std::env::var("PORT").unwrap_or_else(|_| "5000".to_string()).parse().unwrap()))?  // ? Bubbles up errors from the associated function.                       // Bind attaches a socket address to the application.
+    }).bind((ip, port))?  // ? Bubbles up errors from the associated function.                       // Bind attaches a socket address to the application.
     .run() // Returns an instance of Server type.
     .await
 }
