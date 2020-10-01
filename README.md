@@ -71,7 +71,7 @@ The REST API to the example app is described below.
 
 `GET /users/`
 
-    curl -i -H 'Accept: application/json' http://localhost:5000/articles/
+    curl -i -H 'Accept: application/json' https://ai10cle-api.herokuapp.com/api/users
 
 ### Response
 
@@ -90,7 +90,7 @@ The REST API to the example app is described below.
 
 `POST /users/`
 
-    curl -i -H 'Accept: application/json' -d 'name=Foo&status=new' http://localhost:7000/thing
+    curl -i -H 'Accept: application/json' -d 'name=Foo&status=new' https://ai10cle-api.herokuapp.com/api/users
 
 ### Response
 
@@ -110,7 +110,6 @@ The REST API to the example app is described below.
 
 `GET /users/id`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/1
 
 ### Response
 
@@ -123,13 +122,13 @@ The REST API to the example app is described below.
 
     {"id":1,"name":"Foo","status":"new"}
 
-## Get a non-existent Thing
+## Get an Article by id.
 
 ### Request
 
 `GET /articles/id`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/9999
+    curl -i -H 'Accept: application/json' https://ai10cle-api.herokuapp.com/api/users/id
 
 ### Response
 
@@ -148,7 +147,7 @@ The REST API to the example app is described below.
 
 `POST /article/`
 
-    curl -i -H 'Accept: application/json' -d 'name=Bar&junk=rubbish' http://localhost:7000/thing
+    curl -i -H 'Accept: application/json' -d 'name=Bar&junk=rubbish' https://ai10cle-api.herokuapp.com/api/articles
 
 ### Response
 
@@ -162,13 +161,13 @@ The REST API to the example app is described below.
 
     {"id":2,"name":"Bar","status":null}
 
-## Get list of Things again
+## Get list of Articles
 
 ### Request
 
 `GET /article/`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/
+    curl -i -H 'Accept: application/json' https://ai10cle-api.herokuapp.com/api/articles
 
 ### Response
 
@@ -181,32 +180,15 @@ The REST API to the example app is described below.
 
     [{"id":1,"name":"Foo","status":"new"},{"id":2,"name":"Bar","status":null}]
 
-## Change a Thing's state
+
+
+## Get Article
 
 ### Request
 
-`PUT /thing/:id/status/changed`
+`GET /article/id`
 
-    curl -i -H 'Accept: application/json' -X PUT http://localhost:7000/thing/1/status/changed
-
-### Response
-
-    HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:31 GMT
-    Status: 200 OK
-    Connection: close
-    Content-Type: application/json
-    Content-Length: 40
-
-    {"id":1,"name":"Foo","status":"changed"}
-
-## Get changed Thing
-
-### Request
-
-`GET /thing/id`
-
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/1
+    curl -i -H 'Accept: application/json' https://ai10cle-api.herokuapp.com/api/articles/id
 
 ### Response
 

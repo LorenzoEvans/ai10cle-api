@@ -8,7 +8,7 @@ use diesel::dsl::{delete, insert_into};
 use serde::{Deserialize, Serialize};
 use std::vec::Vec;
 use bcrypt::{hash, verify, DEFAULT_COST};
-
+// CRU
 
 // add crud
 #[derive(Debug, Serialize, Deserialize)]
