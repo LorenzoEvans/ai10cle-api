@@ -39,6 +39,7 @@ async fn main() -> std::io::Result<()> {
     let domain: String = std::env::var("DOMAIN").unwrap_or_else(|_| "localhost".to_string());
     let ip: &str = "0.0.0.0";
     let port = 5000;
+    let port_val = std::env::var("PORT").unwrap_or_else(|_| "0.0.0.0:5000".to_string());
     let pool: Pool = r2d2::Pool::builder()
         .build(manager)
         .expect("Failed to create pool.");
@@ -69,7 +70,7 @@ async fn main() -> std::io::Result<()> {
                 .route("/users/{id}", web::get().to(user_handlers::get_user_by_id))
                 .route("/users", web::post().to(user_handlers::add_user))
                 .route("/users/{id}", web::delete().to(user_handlers::delete_user)))   
-    }).bind((ip, port))?  // ? Bubbles up errors from the associated function.                       // Bind attaches a socket address to the application.
+    }).bind(port_val)?  // ? Bubbles up errors from the associated function.                       // Bind attaches a socket address to the application.
     .run() // Returns an instance of Server type.
     .await
 }
