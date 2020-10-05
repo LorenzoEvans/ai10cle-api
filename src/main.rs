@@ -93,7 +93,7 @@ async fn validate(req: ServiceRequest, credentials: BearerAuth) -> Result<Servic
 }
 
 fn get_server_port() -> u16 {
-    env::var("PORT")
+    std::env::var("PORT")
         .ok()
         .and_then(|p| p.parse().ok())
         .unwrap_or(8080)
