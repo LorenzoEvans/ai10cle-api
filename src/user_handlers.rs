@@ -59,10 +59,10 @@ pub async fn get_user_by_id(db: web::Data<Pool>, _id: web::Path<i32>) -> Result<
     // We're returning result types, because we want to prepare for potential failure,
     // which requires a Error type, to be available along with the HttpResponse type that
     // will be returned if the request is successful.
-Ok(web::block(move || db_get_user_by_id(db, _id.into_inner()))
-    .await
-    .map(|user| HttpResponse::Ok().json(user))
-    .map_err(|_| HttpResponse::InternalServerError())?)
+    Ok(web::block(move || db_get_user_by_id(db, _id.into_inner()))
+        .await
+        .map(|user| HttpResponse::Ok().json(user))
+        .map_err(|_| HttpResponse::InternalServerError())?)
 }
 
 pub async fn add_user(db: web::Data<Pool>, item: web::Json<InputUser>) -> Result<HttpResponse, Error> {
@@ -135,5 +135,6 @@ fn change_user_email(db: web::Data<Pool>, _id: i32, new_email: String) -> Result
     let update_user = diesel::update(users.filter(_id.eq(id)))
         .set(email.eq(new_email))
         .execute(&conn);
+    Ok(update_user)
 
 }

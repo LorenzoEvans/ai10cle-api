@@ -49,10 +49,6 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(Cors::new()
                 .allowed_origin("http://localhost:3000/")
-                .allowed_methods(vec!["GET", "POST"])
-                .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT])
-                .allowed_header(http::header::CONTENT_TYPE)
-                .max_age(3600)
                 .finish())
             .wrap(auth)
             .data(pool.clone()) // allows each handlers a copy of the dB
@@ -93,6 +89,7 @@ async fn validate(req: ServiceRequest, credentials: BearerAuth) -> Result<Servic
 }
 
 fn get_server_port() -> u16 {
+    // Returns server port from env var for binding.
     std::env::var("PORT")
         .ok()
         .and_then(|p| p.parse().ok())
