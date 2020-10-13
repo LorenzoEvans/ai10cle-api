@@ -65,7 +65,7 @@
 
 The REST API to the example app is described below.
 
-## Get list of Things
+## Get list of Users
 
 ### Request
 
@@ -84,7 +84,7 @@ The REST API to the example app is described below.
 
     []
 
-## Create a new Thing
+## Create a new User
 
 ### Request
 
@@ -104,7 +104,7 @@ The REST API to the example app is described below.
 
     {"id":1,"name":"Foo","status":"new"}
 
-## Get a specific Thing
+## Get a specific User
 
 ### Request
 
