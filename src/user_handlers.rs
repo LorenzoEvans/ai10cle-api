@@ -4,14 +4,15 @@ use super::Pool;
 use crate::diesel::QueryDsl;
 use actix_web::{web, Error, HttpResponse};
 use crate::diesel::RunQueryDsl;
-use diesel::dsl::{delete, insert_into};
+use diesel::dsl::{delete, insert_into, get};
 use serde::{Deserialize, Serialize};
 use std::vec::Vec;
+use crate::diesel::ExpressionMethods;
 use bcrypt::{hash, verify, DEFAULT_COST};
 // CRU
 
 // add crud
-#[derive(Debug, Serialize, Deserialize, Insertable)]
+#[derive(Debug, Serialize, Deserialize, Insertable, SelectableExpression)]
 
 pub struct InputUser {
     #[serde(skip)]
@@ -29,7 +30,7 @@ pub struct InputUser {
     // Once we do this, upon login, we can check if the hashed password,
     // and email match an email/hashed_pw pair in the database.
 
-#[derive(Serialize, Deserialize, Insertable)]
+#[derive(Serialize, Deserialize, Insertable, SelectableExpression)]
 pub struct RegisterUser {
     // Register user struct for representing a user *during* registration process
     pub email: String,
@@ -38,7 +39,7 @@ pub struct RegisterUser {
     pub password: String,
     pub password_conf: String,
 }
-#[derive(Serialize, Deserialize, Insertable)]
+#[derive(Serialize, Deserialize, Insertable, )]
 pub struct AuthUser {
     // Auth user struct for representing a user *during* login process
     pub email: String,
@@ -129,12 +130,12 @@ fn delete_single_user(db: web::Data<Pool>, _id: i32) -> Result<usize, diesel::re
 
 // user can change email
 // https://github.com/diesel-rs/diesel/issues/1369
-fn change_user_email(db: web::Data<Pool>, _id: i32, new_email: String) -> Result<usize, diesel::result::Error> {
-    let conn = db.get().unwrap();
+fn change_user_email(db: web::Data<Pool>, _id: i32, new_email: String) {
 
-    let update_user = diesel::update(users.filter(_id.eq(id)))
-        .set(email.eq(new_email))
-        .execute(&conn);
-    Ok(update_user)
+    // This has to be split in two, note to self.
+    let conn = db.get().unwrap();
+    let target = users.filter(user_id.eq(_id));
+
+    let update_user = diesel::update(users).set(email.eq(new_email)).execute(&conn);
 
 }
