@@ -1,0 +1,10 @@
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/debug/deps/resolv_conf-b328f576bb07c5c4.rmeta: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/grammar.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/ip.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/config.rs
+
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/debug/deps/libresolv_conf-b328f576bb07c5c4.rlib: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/grammar.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/ip.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/config.rs
+
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/debug/deps/resolv_conf-b328f576bb07c5c4.d: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/grammar.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/ip.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/config.rs
+
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/lib.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/grammar.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/ip.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/resolv-conf-0.6.3/src/config.rs:

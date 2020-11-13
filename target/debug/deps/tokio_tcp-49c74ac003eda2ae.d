@@ -1,0 +1,10 @@
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/debug/deps/tokio_tcp-49c74ac003eda2ae.rmeta: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/incoming.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/listener.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/stream.rs
+
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/debug/deps/libtokio_tcp-49c74ac003eda2ae.rlib: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/incoming.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/listener.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/stream.rs
+
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/debug/deps/tokio_tcp-49c74ac003eda2ae.d: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/incoming.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/listener.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/stream.rs
+
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/lib.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/incoming.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/listener.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-tcp-0.1.4/src/stream.rs:

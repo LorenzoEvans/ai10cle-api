@@ -1,0 +1,9 @@
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/rls/debug/deps/socket2-85b2d6d8c40e16e9.rmeta: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/sockaddr.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/socket.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/utils.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/sys/unix.rs
+
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/rls/debug/deps/socket2-85b2d6d8c40e16e9.d: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/sockaddr.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/socket.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/utils.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/sys/unix.rs
+
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/lib.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/sockaddr.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/socket.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/utils.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/socket2-0.3.15/src/sys/unix.rs:

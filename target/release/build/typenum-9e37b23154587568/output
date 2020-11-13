@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/release/build/typenum-9e37b23154587568/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/release/build/typenum-9e37b23154587568/out/op.rs

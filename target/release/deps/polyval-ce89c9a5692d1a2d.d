@@ -1,0 +1,10 @@
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/release/deps/polyval-ce89c9a5692d1a2d.rmeta: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field/u32_soft.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field/u64_soft.rs
+
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/release/deps/libpolyval-ce89c9a5692d1a2d.rlib: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field/u32_soft.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field/u64_soft.rs
+
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/release/deps/polyval-ce89c9a5692d1a2d.d: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field/u32_soft.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field/u64_soft.rs
+
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/lib.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field/u32_soft.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/polyval-0.4.0/src/field/u64_soft.rs:

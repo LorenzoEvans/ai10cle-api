@@ -1,0 +1,10 @@
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/rls/debug/deps/sha2-a5c2b3aeb8d4622f.rmeta: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/consts.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha256.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha256_utils.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha512.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha512_utils.rs
+
+/Users/lambda_school_loaner_94/Desktop/Contents/Languages/Rust/ai10cle-api/target/rls/debug/deps/sha2-a5c2b3aeb8d4622f.d: /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/lib.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/consts.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha256.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha256_utils.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha512.rs /Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha512_utils.rs
+
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/lib.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/consts.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha256.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha256_utils.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha512.rs:
+/Users/lambda_school_loaner_94/.cargo/registry/src/github.com-1ecc6299db9ec823/sha2-0.8.2/src/sha512_utils.rs:
